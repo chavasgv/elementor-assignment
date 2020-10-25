@@ -1,0 +1,26 @@
+
+'''
+SQL Questions
+
+1.
+Select  * from 
+(select 
+department_name,
+rank() over (partition by department_id order by  salary desc),
+first_name,
+last_name,
+salary,
+salary-lead(salary,1) over (partition by department_id order by salary) as diff_from_second_earning
+ from 
+employees e join departments d 
+on e. department_id=d. department_id)
+where rank=1
+
+
+2.
+select 
+site,
+sum(if (date> =(start_date and date =<end_date ) or start_date is null, number of visitors,0))/sum (number of visitors)
+from site_visitors s left join promotion dates on s.site=p.site
+group by site
+'''
