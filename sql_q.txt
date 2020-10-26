@@ -2,25 +2,42 @@
 '''
 SQL Questions
 
-1.
-Select  * from 
-(select 
+1. 
+
+--Assuming no two  top two salaries from same department
+with sal as (select 
 department_name,
-rank() over (partition by department_id order by  salary desc),
+row_number() over (partition by department_name order by  salary desc) as rank1,
 first_name,
 last_name,
 salary,
-salary-lead(salary,1) over (partition by department_id order by salary) as diff_from_second_earning
+salary-lead(salary,1) over (partition by department_name order by salary desc) as diff_from_second_earning
  from 
 employees e join departments d 
 on e. department_id=d. department_id)
-where rank=1
+
+Select  * from 
+sal
+where rank1=1
+
+
 
 
 2.
+with promo as 
+(select
+distinct
+s.site,
+date,
+`number of visitors`,
+if(promotion_code is null, 0,`number of visitors`) as from_promotion
+from `-	site_visitors` s left join `promotion dates` p on s.site=p.site  and (date>=start_date and date <=end_date))
+
+
 select 
+date,
 site,
-sum(if (date> =(start_date and date =<end_date ) or start_date is null, number of visitors,0))/sum (number of visitors)
-from site_visitors s left join promotion dates on s.site=p.site
-group by site
+sum(from_promotion)*100/sum(`number of visitors`) as percent_promo
+from  promo
+
 '''

@@ -1,0 +1,14 @@
+CREATE SCHEMA IF NOT EXISTS `chava_test` ;
+
+CREATE TABLE IF NOT EXISTS  `chava_test`.`url_risk` (
+  `dt` DATETIME NOT NULL,
+  `url` VARCHAR(45) NOT NULL,
+  `Site_Risk` VARCHAR(45) NULL,
+  `clean` INT NULL,
+  `unrated` INT NULL,
+  `malicious` INT NULL,
+  `malware` INT NULL,
+  `phishing` INT NULL,
+  PRIMARY KEY (`dt`, `url`));
+
+
