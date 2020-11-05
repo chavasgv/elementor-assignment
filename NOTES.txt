@@ -1,5 +1,8 @@
-1. In the AWS environment I would have implemnted it with a labmda function that will be trigered every time a url_list would be uploded to s3 bucket. the db would be any kind of RDS.
+1. In the AWS environment I would have implemented it with a labmda function that will be trigered every time a url_list would be uploded to s3 bucket. the db would be any kind of RDS.
 2. I could not find any 'categories' tag in the url api. 
-3. Had problems accessing sql with python in my current environmant setup. and run out of time...  :-(
 
-***api key 
+instractions:
+1.Update sql connect parameters in config file.
+2.Update your apikey in config file
+3.Update url_file path in config file
+
